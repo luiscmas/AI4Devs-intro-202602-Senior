@@ -1,13 +1,14 @@
 /**
  * Reverse String — script.js
  * Invierte el orden de los caracteres de una cadena de texto.
+ * El botón de inversión sólo se muestra cuando hay más de 3 caracteres.
  */
 
-const inputEl   = document.getElementById('input');
-const outputEl  = document.getElementById('output');
+const inputEl    = document.getElementById('input');
+const outputEl   = document.getElementById('output');
 const reverseBtn = document.getElementById('reverseBtn');
-const copyBtn   = document.getElementById('copyBtn');
-const charCount = document.getElementById('charCount');
+const copyBtn    = document.getElementById('copyBtn');
+const charCount  = document.getElementById('charCount');
 
 /**
  * Invierte una cadena de texto carácter a carácter.
@@ -16,6 +17,17 @@ const charCount = document.getElementById('charCount');
  */
 function reverseString(str) {
     return str.split('').reverse().join('');
+}
+
+/**
+ * Muestra u oculta el botón según si hay más de 3 caracteres en el input.
+ */
+function updateButtonVisibility() {
+    if (inputEl.value.length > 3) {
+        reverseBtn.classList.add('visible');
+    } else {
+        reverseBtn.classList.remove('visible');
+    }
 }
 
 /**
@@ -67,8 +79,11 @@ async function handleCopy() {
 reverseBtn.addEventListener('click', handleReverse);
 copyBtn.addEventListener('click', handleCopy);
 
-// Inversión en tiempo real mientras se escribe
-inputEl.addEventListener('input', handleReverse);
+// Actualizar visibilidad del botón e inversión en tiempo real mientras se escribe
+inputEl.addEventListener('input', () => {
+    updateButtonVisibility();
+    handleReverse();
+});
 
 // Atajo de teclado: Ctrl/Cmd + Enter también invierte
 inputEl.addEventListener('keydown', (e) => {
@@ -76,3 +91,4 @@ inputEl.addEventListener('keydown', (e) => {
         handleReverse();
     }
 });
+

@@ -19,3 +19,10 @@
 > Restricciones:
 > - No crees ningún archivo adicional.
 > - No utilices ningún framework CSS ni Javascript.
+## Prompt 2
+
+> A continuación añade la siguiente funcionalidad: El botón debe aparecer cuando haya texto suficiente, más de 3 caracteres.
+>
+> Actualiza el archivo Prompts.md con este prompt.
+
+---
